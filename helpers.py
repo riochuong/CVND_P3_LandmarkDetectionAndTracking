@@ -58,7 +58,7 @@ def make_data(N, num_landmarks, world_size, measurement_range, motion_noise,
 
     # check if data has been made
     complete = False
-
+    print ("Make new Data")
     while not complete:
 
         data = []
@@ -73,7 +73,7 @@ def make_data(N, num_landmarks, world_size, measurement_range, motion_noise,
         dx = cos(orientation) * distance
         dy = sin(orientation) * distance
     
-        for k in range(N-1):
+        for k in range(N - 1):
     
             # collect sensor measurements in a list, Z
             Z = r.sense()

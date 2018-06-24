@@ -34,6 +34,7 @@ class robot:
         self.measurement_noise = measurement_noise
         self.landmarks = []
         self.num_landmarks = 0
+        print("Initialized")
     
     
     # returns a positive, random float
@@ -84,14 +85,14 @@ class robot:
         ## TODO: For each landmark
         for i, landmark in enumerate(self.landmarks):
         ## 1. compute dx and dy, the distances between the robot and the landmark
-            dx = self.x - landmark[0] + self.measurement_noise * self.rand()
-            dy = self.y - landmark[1] + self.measurement_noise * self.rand()
+            dx = -self.x + landmark[0] + self.measurement_noise * self.rand()
+            dy = -self.y + landmark[1] + self.measurement_noise * self.rand()
         ## 2. account for measurement noise by *adding* a noise component to dx and dy
         ##    - The noise component should be a random value between [-1.0, 1.0)*measurement_noise
         ##    - Feel free to use the function self.rand() to help calculate this noise component
         ##    - It may help to reference the `move` function for noise calculation
         ## 3. If either of the distances, dx or dy, fall outside of the internal var, measurement_range
-            if abs(dx) > self.measurement_range or abs(dy) > self.measurement_range:
+            if (abs(dx) > self.measurement_range) or (abs(dy) > self.measurement_range):
                 continue
         ##    then we cannot record them; if they do fall in the range, then add them to the measurements list
         ##    as list.append([index, dx, dy]), this format is important for data creation done later
